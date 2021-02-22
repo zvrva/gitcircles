@@ -10,12 +10,13 @@ class Example(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
-        self.n = 0
+        self.n = False
         self.color = []
         for i in range(0, 256):
             self.color.append(i)
 
     def initUI(self):
+        self.n = False
         self.setGeometry(300, 300, 300, 300)
         self.setWindowTitle('Git и случайные окружности')
         self.b = QPushButton(self)
@@ -26,6 +27,7 @@ class Example(QWidget):
 
     def run(self):
         self.n = True
+        self.repaint()
 
     def paintEvent(self, event):
         if self.n:
@@ -41,7 +43,8 @@ class Example(QWidget):
         f = choice([1, 2, 3, 4])
         for i in range(f):
             qp.setBrush(QColor(choice(self.color), choice(self.color), choice(self.color)))
-            qp.drawEllipse(choice(c), choice(c), choice(c), choice(c))
+            a = choice(c)
+            qp.drawEllipse(choice(c), choice(c), a, a)
 
 
 if __name__ == '__main__':
